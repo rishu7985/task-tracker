@@ -12,41 +12,28 @@ class Task
     string createdAt;
     string updatedAt;
 
+    string currentTime ();
+
 public:
 
-    void update(int id,string description,string status,string createdAt,string updatedAt)
-    {
-        this->id = id;
-        this->description = description;
-        this->status = status;
-        this->createdAt = createdAt;
-        this->updatedAt = updatedAt;
-    }
+    Task();
+    Task(int id,string description);    
 
-    int getId()
-    {
-        return id;
-    }
+    void update(int id,string description,string status,string createdAt,string updatedAt);
 
-    string getDescription()
-    {
-        return description;
-    }
+    int getId();
 
-    string getStatus()
-    {
-        return status;
-    }
+    string getDescription();
 
-    string getCreate()
-    {
-        return createdAt;
-    }
+    string getStatus();
 
-    string getUpdate()
-    {
-        return updatedAt;;
-    }
+    string getCreate();
+
+    string getUpdate();
+
+    void markDone();
+    void markInProgress();
+
 };
 
 #endif
