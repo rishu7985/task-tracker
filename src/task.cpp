@@ -1,6 +1,15 @@
 #include "task.h"
 #include <ctime>
 
+Task::Task() {
+    id = 0;
+    description = "";
+    status = "todo";
+    createdAt = currentTime();
+    updatedAt = currentTime();
+}
+
+
 Task::Task(int id, string description) {
     this->id = id;
     this->description = description;

@@ -9,6 +9,8 @@ vector<Task> loadTasks() {
     vector<Task> tasks;
     ifstream file("data/tasks.json");
 
+    
+
     string line;
     while (getline(file, line)) {
         if(line.find("\"id\"") != string::npos){
@@ -47,21 +49,27 @@ vector<Task> loadTasks() {
 
 void saveTasks(const vector<Task>& tasks) {
     ofstream file("data/tasks.json");
+
+    if (!file.is_open()) {
+        cout << "Failed to open tasks.json\n";
+        return;
+    }
+
     file << "[\n";
 
     for (int i = 0; i < tasks.size(); i++) {
-        Task t = tasks[i];
+        Task it = tasks[i];
         file << "  {\n";
-        file << "    \"id\": " << t.getId() << ",\n";
-        file << "    \"description\": \"" << t.getDescription() << "\",\n";
-        file << "    \"status\": \"" << t.getStatus()<< "\"\n";
-        file << "    \"createdAt\": \"" << t.getCreate() << "\",\n";
-        file << "    \"updatedAt\": \"" << t.getUpdate() << "\",\n";
+        file << "    \"id\": " << it.getId() << ",\n";
+        file << "    \"description\": \"" << it.getDescription() << "\",\n";
+        file << "    \"status\": \"" << it.getStatus() << "\",\n";
+        file << "    \"created at\": \"" << it.getCreate() << "\",\n";
+        file << "    \"updated at\": \"" << it.getUpdate() << "\"\n";
         file << "  }";
 
         if (i != tasks.size() - 1) file << ",";
         file << "\n";
-    }  
+    }
 
     file << "]";
     file.close();
