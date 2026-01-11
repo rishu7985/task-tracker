@@ -30,7 +30,11 @@ void Task::update(int id,string description,string status,string createdAt,strin
     this->description = description;
     this->status = status;
     this->createdAt = createdAt;
-    this->updatedAt = updatedAt;
+    if (updatedAt == "") {
+    this->updatedAt = currentTime();
+    } else {
+        this->updatedAt = updatedAt;
+    }
 }
 
 int Task::getId()
